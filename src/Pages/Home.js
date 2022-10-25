@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import {
   fetchTasks,
   fetchTasksId,
+  putTasks
 } from "../Services/taskServices";
 import {useAddTaskData, useDelTaskData, usePutTaskData} from "../Hooks/useTaskData";
 import { useQuery } from "react-query";
@@ -50,8 +51,7 @@ const Home = () => {
   const toggleReminder = async (id) => {
     const tasktoToggle = await fetchTasksId(id);
     const updTask = { ...tasktoToggle, reminder: !tasktoToggle.reminder };
-    // console.log(updTask);
-    putTask(id, updTask);
+    const res = putTasks(id, updTask);
   };
 
   const showForm = () => {
